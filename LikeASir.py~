@@ -1,0 +1,43 @@
+import sys, math
+from Tkinter import *
+import tkMessageBox
+
+def main():
+    top = Tk()
+    #text input
+    textIn = Text(top)
+    textIn.pack()
+
+    #sir it button
+    sirIt = Button(top, text="Like a Sir!", command=lambda:tkMessageBox.showinfo("Siring", "Ok"))
+    sirIt.pack()
+
+    #dial code
+    dialAngle = math.pi
+    ds = 60
+    cx = ds/2
+    cy = ds/2
+    r = ds/3
+    dial = Canvas(top, width=ds, height=ds)
+    #circle
+    dial.create_oval(cx-r,cy-r,cx+r,cy+r,outline="#DDD",width=2)
+    #indicator
+    dial.create_line(cx,cy,cx+r*math.cos(dialAngle), cy+r*math.sin(dialAngle),width=2)
+    #tick marks
+    
+    dial.pack()
+
+    #text output
+    textOut = Text(top)
+    textOut.pack()
+    
+    top.wm_title("Diction, Like a Sir!!!")
+    top.mainloop()
+
+if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        #command mode
+        pass
+    else:
+        #GUI mode
+        main()
